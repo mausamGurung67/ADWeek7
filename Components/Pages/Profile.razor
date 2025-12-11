@@ -1,0 +1,24 @@
+﻿@page "/profile"
+
+<h2 style="text-align:center; margin-bottom:20px;">Student Profile</h2>
+
+<div style="display:flex; flex-direction:column; align-items:center; gap:15px;">
+    <!-- Student Photo -->
+    <img src="@photoPath" alt="@studentName"
+         style="width:200px; height:200px; border-radius:50%; object-fit:cover; box-shadow:0 4px 10px rgba(0,0,0,0.2);" />
+
+    <!-- Student Info -->
+    <div style="text-align:center;">
+        <p><strong>Name:</strong> @studentName</p>
+        <p><strong>Course:</strong> @courseName</p>
+        <p><strong>Batch Year:</strong> @batchYear</p>
+    </div>
+</div>
+
+@code {
+    // Static variables for profile info
+    private string photoPath = "images/student1.jpg"; // or online image URL
+    private string studentName = "Student Name";
+    private string courseName = ".NET MAUI Hybrid Training";
+    private string batchYear = "2025";
+}
