@@ -1,30 +1,30 @@
-﻿
-@page "/monkeys"
+﻿@page "/monkeys"
 
 <h2 style="text-align:center; margin-bottom:30px;">Monkeys</h2>
 
-<div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
-    @foreach (var monkey in monkeys)
-    {
-        <div style="width:250px; border:1px solid #ccc; border-radius:10px; padding:15px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
-            <img src="@monkey.Image" alt="@monkey.Name" style="width:100%; height:150px; object-fit:cover; border-radius:10px; margin-bottom:10px;" />
-            <h4>@monkey.Name</h4>
-            <p>@monkey.Location</p>
+@if (monkeys.Count == 0)
+{
+    <p style="text-align:center; color:red; font-weight:bold;">No monkeys found</p>
+}
+else
+{
+    <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+        @foreach (var monkey in monkeys)
+        {
+            <div style="width:250px; border:1px solid #ccc; border-radius:10px; padding:15px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                <!-- Monkey Image -->
+                <img src="@monkey.Image" alt="@monkey.Name"
+                     style="width:100%; height:150px; object-fit:cover; border-radius:10px; margin-bottom:10px;" />
 
-            @* Conditional rendering example: if the monkey is Baboon, show special note *@
-            @if (monkey.Name == "Baboon")
-            {
-                <p style="color:green; font-weight:bold;">This is a Baboon!</p>
-            }
-        </div>
-    }
-</div>
-
-
+                <!-- Monkey Info -->
+                <h4>@monkey.Name</h4>
+                <p>@monkey.Location</p>
+            </div>
+        }
+    </div>
+}
 
 @code {
-   @code {
-    // Monkey class
     public class Monkey
     {
         public string Name { get; set; }
@@ -32,13 +32,10 @@
         public string Image { get; set; }
     }
 
-    // List of monkeys
     private List<Monkey> monkeys = new List<Monkey>
     {
         new Monkey { Name = "Baboon", Location = "Africa & Asia", Image = "https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg" },
         new Monkey { Name = "Capuchin Monkey", Location = "Central & South America", Image = "https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/capuchin.jpg" },
         new Monkey { Name = "Blue Monkey", Location = "Central and East Africa", Image = "https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/bluemonkey.jpg" }
     };
-}
-
 }
